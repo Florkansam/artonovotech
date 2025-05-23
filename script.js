@@ -1,3 +1,19 @@
+fetch('articles.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('articlesContainer');
+    container.innerHTML = '';
+    data.forEach(article => {
+      container.innerHTML += `
+        <article>
+          <h3>${article.categorie}</h3>
+          <h4>${article.titre}</h4>
+          <p>${article.texte}</p>
+        </article>
+      `;
+    });
+  });
+
 const toggleMenu = document.getElementById('toggleMenu');
 const nav = document.getElementById('navbar');
 if (toggleMenu) {
@@ -13,3 +29,4 @@ if (uploadForm) {
     uploadForm.reset();
   });
 }
+

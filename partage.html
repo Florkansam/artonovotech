@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Partage – ArtoNovTech</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>ArtoNovTech</h1>
+    <nav id="navbar">
+      <a href="index.html">Accueil</a>
+      <a href="index.html#apropos">À propos</a>
+      <a href="index.html#blog">Blog</a>
+      <a href="partage.html">Partage</a>
+    </nav>
+    <button id="toggleMenu">☰</button>
+  </header>
+
+  <section class="form-section">
+    <h2>Partage tes créations</h2>
+    <p>Tu peux téléverser ici une histoire, un texte, ou toute autre activité créative.</p>
+
+    <form id="uploadForm">
+      <label for="titre">Titre :</label>
+      <input type="text" id="titre" name="titre" required />
+
+      <label for="description">Description :</label>
+      <textarea id="description" name="description" rows="4" required></textarea>
+
+      <label for="fichier">Fichier (PDF, DOCX, TXT) :</label>
+      <input type="file" id="fichier" name="fichier" accept=".pdf,.doc,.docx,.txt" required />
+
+      <button type="submit">Envoyer</button>
+    </form>
+
+    <div id="confirmation" style="display:none;">
+      <p>Merci pour ton envoi !</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ArtoNovTech</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -60,6 +60,27 @@ nav a {
   width: 150px;
   border-radius: 8px;
 }
+
+.forum-section, .disqus-section {
+  margin-top: 30px;
+}
+#forumForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px;
+}
+#forumForm input, #forumForm textarea {
+  padding: 10px;
+  font-size: 1em;
+}
+#messages .message {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
 #blog {
   padding: 2rem;
 }

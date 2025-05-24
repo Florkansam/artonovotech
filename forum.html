@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Forum - ArtoNovTech</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Forum de discussion - ArtoNovTech</h1>
+    <nav><a href="index.html">Accueil</a></nav>
+  </header>
+
+  <section class="forum-section">
+    <h2>Partagez vos idées !</h2>
+    <form id="forumForm">
+      <input type="text" id="pseudo" placeholder="Votre nom" required />
+      <textarea id="message" placeholder="Votre message..." required></textarea>
+      <button type="submit">Publier</button>
+    </form>
+    <div id="messages"></div>
+  </section>
+
+  <section class="disqus-section">
+    <h2>Commentaires publics</h2>
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = window.location.href;
+        this.page.identifier = 'artonovtech-forum';
+      };
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://artonovtech.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Activez JavaScript pour voir les commentaires.</noscript>
+  </section>
+
+  <script src="forum.js"></script>
+</body>
+</html>

@@ -30,6 +30,14 @@ nav a {
   background: none;
   border: none;
 }
+
+.hero {
+  text-align: center;
+  padding: 2rem;
+}
+.hero h2 {
+  font-size: 2rem;
+}
 .hero {
   text-align: center;
   padding: 2rem;

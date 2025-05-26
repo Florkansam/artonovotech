@@ -21,6 +21,9 @@ if (toggleMenu) {
     nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
   });
 }
+
+s.src = 'https://artonovtech.disqus.com/embed.js';
+
 const uploadForm = document.getElementById('uploadForm');
 if (uploadForm) {
   uploadForm.addEventListener('submit', (e) => {

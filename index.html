@@ -85,6 +85,22 @@
     </div>
   </section>
 
+  <div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = window.location.href;
+    this.page.identifier = 'artonovtech-forum';
+  };
+  (function () {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://artonovtech.disqus.com/embed.js';  // Remplace par ton URL Disqus
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Activez JavaScript pour voir les commentaires.</noscript>
+
+
   <footer>
     <p>&copy; 2025 ArtoNovTech. Domaine recommandé : <strong>artonovtech.site</strong></p>
   </footer>

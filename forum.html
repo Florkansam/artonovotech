@@ -10,6 +10,17 @@
      gtag('config', 'G-XXXXXXXXXX');
   </script>
 
+  <title>Forum ArtoNovTech</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; background: #f4f4f4; }
+    h1 { color: #333; }
+    .post { background: white; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    .votes { float: right; }
+    textarea { width: 100%; height: 60px; margin-top: .5rem; }
+    button { margin-top: 0.5rem; }
+    .comments { margin-top: 1rem; font-size: 0.9em; padding-left: 1rem; color: #444; }
+  </style>
+
   <meta charset="UTF-8" />
   <title>Forum - ArtoNovTech</title>
   <link rel="stylesheet" href="style.css">
@@ -24,6 +35,72 @@
       <a href="apropos.html">À propos</a>
     </nav>
   </header>
+
+  <h1>🗨️ Forum de la communauté</h1>
+
+  <div>
+    <input type="text" id="post-title" placeholder="Titre du post" />
+    <textarea id="post-content" placeholder="Contenu..."></textarea>
+    <button onclick="addPost()">Publier</button>
+  </div>
+
+  <hr>
+
+  <div id="posts"></div>
+
+  <script>
+    const postsContainer = document.getElementById('posts');
+
+    let posts = JSON.parse(localStorage.getItem('forum-posts')) || [];
+
+    function renderPosts() {
+      postsContainer.innerHTML = '';
+      posts.forEach((post, index) => {
+        const el = document.createElement('div');
+        el.className = 'post';
+        el.innerHTML = `
+          <h3>${post.title}</h3>
+          <p>${post.content}</p>
+          <div class="votes">
+            👍 <span onclick="vote(${index}, 1)">(${post.votes})</span> 
+            👎 <span onclick="vote(${index}, -1)"> </span>
+          </div>
+          <div class="comments">
+            💬 <input type="text" placeholder="Commenter..." onkeydown="if(event.key==='Enter'){addComment(${index}, this.value); this.value=''}">
+            <div>${post.comments.map(c => `<div>– ${c}</div>`).join('')}</div>
+          </div>
+        `;
+        postsContainer.appendChild(el);
+      });
+    }
+
+    function addPost() {
+      const title = document.getElementById('post-title').value;
+      const content = document.getElementById('post-content').value;
+      if (!title || !content) return;
+      posts.unshift({ title, content, votes: 0, comments: [] });
+      localStorage.setItem('forum-posts', JSON.stringify(posts));
+      renderPosts();
+    }
+
+    function vote(index, value) {
+      posts[index].votes += value;
+      localStorage.setItem('forum-posts', JSON.stringify(posts));
+      renderPosts();
+    }
+
+    function addComment(index, comment) {
+      if (!comment) return;
+      posts[index].comments.push(comment);
+      localStorage.setItem('forum-posts', JSON.stringify(posts));
+      renderPosts();
+    }
+
+    renderPosts();
+  </script>
+
+
+  
   <section class="forum-section">
     <h2>Partagez vos idées !</h2>
     <form id="forumForm">

@@ -1,5 +1,19 @@
 [
   {
+    "titre": "Mon premier article",
+    "date": "2025-05-01",
+    "contenu": "Voici le contenu de mon article."
+  },
+  {
+    "titre": "Deuxième idée",
+    "date": "2025-05-22",
+    "contenu": "Contenu dynamique ici !"
+  }
+]
+
+
+[
+  {
     "categorie": "LITTÉRATURE",
     "titre": "L'Art de Raconter",
     "texte": "Découvre comment écrire une histoire captivante en quelques étapes."

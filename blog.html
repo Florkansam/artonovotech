@@ -5,6 +5,11 @@
   <title>Blog – ArtoNovTech</title>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6372209020640293"
      crossorigin="anonymous"></script>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; background: #f9f9f9; }
+    .article { background: white; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; box-shadow: 0 0 5px #ccc; }
+  </style>
+
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,6 +22,62 @@
       <a href="apropos.html">À propos</a>
     </nav>
   </header>
+    <h1>📰 Blog ArtoNovTech</h1>
+
+  <h2>📚 Articles depuis fichier JSON</h2>
+  <div id="articles-json"></div>
+
+  <h2>📊 Articles depuis Google Sheets</h2>
+  <div id="articles-sheets"></div>
+
+  <h2>✍️ Publier un article (local temporaire)</h2>
+  <form id="form-article">
+    <input type="text" id="titre" placeholder="Titre" required><br><br>
+    <textarea id="contenu" placeholder="Contenu..." rows="5" cols="40" required></textarea><br>
+    <button type="submit">Publier</button>
+  </form>
+  <div id="articles-form"></div>
+
+  <script>
+    // 🔹 1. Charger depuis un fichier JSON local
+    fetch('data/articles.json')
+      .then(res => res.json())
+      .then(articles => {
+        const container = document.getElementById('articles-json');
+        articles.forEach(a => {
+          const div = document.createElement('div');
+          div.className = 'article';
+          div.innerHTML = `<h3>${a.titre}</h3><p><em>${a.date}</em></p><p>${a.contenu}</p>`;
+          container.appendChild(div);
+        });
+      });
+
+    // 🔹 2. Charger depuis Google Sheets en JSON (doit être public en lecture)
+    fetch('https://opensheet.elk.sh/https://docs.google.com/spreadsheets/d/TON_ID_SHEET/pubhtml')
+      .then(res => res.json())
+      .then(rows => {
+        const container = document.getElementById('articles-sheets');
+        rows.forEach(a => {
+          const div = document.createElement('div');
+          div.className = 'article';
+          div.innerHTML = `<h3>${a.titre}</h3><p><em>${a.date}</em></p><p>${a.contenu}</p>`;
+          container.appendChild(div);
+        });
+      });
+
+    // 🔹 3. Formulaire local (temporaire)
+    document.getElementById('form-article').addEventListener('submit', e => {
+      e.preventDefault();
+      const titre = document.getElementById('titre').value;
+      const contenu = document.getElementById('contenu').value;
+      const div = document.createElement('div');
+      div.className = 'article';
+      div.innerHTML = `<h3>${titre}</h3><p><em>${new Date().toLocaleDateString()}</em></p><p>${contenu}</p>`;
+      document.getElementById('articles-form').prepend(div);
+      e.target.reset();
+    });
+  </script>
+
 
   <main id="blog-container">
     <p>Chargement des articles...</p>

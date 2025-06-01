@@ -52,8 +52,8 @@
         });
       });
 
-    // 🔹 2. Charger depuis Google Sheets en JSON (doit être public en lecture)
-    fetch('https://opensheet.elk.sh/https://docs.google.com/spreadsheets/d/TON_ID_SHEET/pubhtml')
+    // 🔹 2. Charger depuis Google Sheets (ID intégré)
+    fetch('https://opensheet.elk.sh/1KmeC_CttUKk7iwuTCNE8NlmcjrkR_DcLLYkKkWZvj5U')
       .then(res => res.json())
       .then(rows => {
         const container = document.getElementById('articles-sheets');

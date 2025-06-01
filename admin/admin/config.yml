@@ -1,6 +1,7 @@
+      # Fichier admin/config.yml
 backend:
   name: github
-  repo: TON_GITHUB/TON_DEPOT
+  repo: artonovtech/artonovtech-site  # 🔁 Remplacer par ton propre dépôt GitHub
   branch: main
 
 media_folder: "images/uploads"
@@ -16,3 +17,4 @@ collections:
       - {label: "Titre", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Contenu", name: "body", widget: "markdown"}
+

@@ -37,6 +37,40 @@
     <button type="submit">Publier</button>
   </form>
   <div id="articles-form"></div>
+  <div id="articles"></div>
+
+<script>
+async function loadArticles() {
+  const articlesContainer = document.getElementById("articles");
+
+  const files = [
+    "articles/2025-06-01-exemple.md",
+    "articles/2025-06-02-nouvelle-histoire.md"
+  ];
+
+  for (let file of files) {
+    const res = await fetch(file);
+    const text = await res.text();
+
+    const title = text.match(/title:\s*\"(.*?)\"/)?.[1] || "Sans titre";
+    const date = text.match(/date:\s*\"(.*?)\"/)?.[1] || "";
+    const body = text.split("---")[2]?.trim() || "";
+
+    const html = `
+      <article>
+        <h2>${title}</h2>
+        <p><small>${date}</small></p>
+        <p>${body}</p>
+        <hr/>
+      </article>
+    `;
+    articlesContainer.innerHTML += html;
+  }
+}
+
+loadArticles();
+</script>
+
 
   <script>
     // 🔹 1. Charger depuis un fichier JSON local

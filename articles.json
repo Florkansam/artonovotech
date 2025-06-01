@@ -1,5 +1,14 @@
 [
   {
+    "titre": "Bienvenue sur ArtoNovTech",
+    "date": "2025-05-23",
+    "contenu": "Voici notre premier article, publié depuis un fichier JSON !"
+  }
+]
+
+
+[
+  {
     "titre": "Mon premier article",
     "date": "2025-05-01",
     "contenu": "Voici le contenu de mon article."
